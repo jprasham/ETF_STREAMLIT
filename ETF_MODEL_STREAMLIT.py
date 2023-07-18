@@ -68,7 +68,14 @@ ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
 ETFs['Ticker_Index'] = ETFs['Ticker']
 ETFs.set_index('Ticker_Index',inplace = True)
 
-etf_dma  = ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')]
+#etf_dma  = ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')]
+etf_dma = ETFs[['Ticker','Name','Category','Sub category','Price','50DMAModel','100DMAModel','200DMAModel']]
+etf_dma['>50DMA'] = (etf_dma['50DMAModel'] == "INVESTED").astype(int)
+etf_dma['>200DMA'] = (etf_dma['200DMAModel'] == "INVESTED").astype(int)
+etf_dma['>50DMA>200DMA'] = (etf_dma['200DMAModel'] == "INVESTED").astype(int)
+etf_dma['SCORE'] = etf_dma['>50DMA'] + etf_dma['>200DMA'] + etf_dma['>50DMA>200DMA']
+etf_dma = etf_dma[['Ticker','Name','Category','Sub category','Price','>50DMA','>50DMA>200DMA','>200DMA','SCORE']]
+etf_dma
 etf_tr_1 = ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')]
 etf_tr_2 = ETFs.loc[(ETFs['200DMAModel'] == 'CASH') & (ETFs['50DMAModel'] == 'INVESTED') & (ETFs['Fallin1Wmore10']<= 10)]
 etf_ex_1 = ETFs.loc[ETFs['HistExcessReturn_12M']>=80]
