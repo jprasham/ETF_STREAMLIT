@@ -75,7 +75,7 @@ etf_dma['>200DMA'] = (etf_dma['200DMAModel'] == "INVESTED").astype(int)
 etf_dma['>50DMA>200DMA'] = (etf_dma['200DMAModel'] == "INVESTED").astype(int)
 etf_dma['SCORE'] = etf_dma['>50DMA'] + etf_dma['>200DMA'] + etf_dma['>50DMA>200DMA']
 etf_dma = etf_dma[['Ticker','Name','Category','Sub category','Price','>50DMA','>50DMA>200DMA','>200DMA','SCORE']]
-etf_dma
+
 etf_tr_1 = ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')]
 etf_tr_2 = ETFs.loc[(ETFs['200DMAModel'] == 'CASH') & (ETFs['50DMAModel'] == 'INVESTED') & (ETFs['Fallin1Wmore10']<= 10)]
 etf_ex_1 = ETFs.loc[ETFs['HistExcessReturn_12M']>=80]
@@ -194,7 +194,7 @@ with st.sidebar:
 
 
 st.write('## ETFs above 50,100,200 DMA')
-st.dataframe(etf_dma[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
+st.dataframe(etf_dma[['Ticker','Name','Category','Sub category','Price','>50DMA','>50DMA>200DMA','>200DMA','SCORE']])
 
 st.write('## Change in Trend')
 st.write('### Above 200 DMA And Below 50 DMA')
