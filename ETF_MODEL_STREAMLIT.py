@@ -193,7 +193,7 @@ with st.sidebar:
   st.write("Link to the US Stock Model(%s) " % url4)
 
 
-st.write('## ETFs above 50,100,200 DMA')
+st.write('## ETFs Score based on 50 and 200 DMA')
 st.dataframe(etf_dma[['Ticker','Name','Category','Sub category','Price','>50DMA','>50DMA>200DMA','>200DMA','SCORE']])
 
 st.write('## Change in Trend')
