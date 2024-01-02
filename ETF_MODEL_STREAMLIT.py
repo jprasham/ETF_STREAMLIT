@@ -193,15 +193,15 @@ with st.sidebar:
   st.write("Link to the US Stock Model(%s) " % url4)
 
 
-st.write('## ETFs Score based on 50 and 200 DMA')
+st.write('## 50 & 200 MA Signals')
 st.dataframe(etf_dma[['Ticker','Name','Category','Sub category','Price','SCORE','>50DMA','>50DMA>200DMA','>200DMA']])
 
 st.write('## Change in Trend')
-st.write('### Above 200 DMA And Below 50 DMA')
+st.write('### Change in Trend - Negative')
 
 st.dataframe(etf_tr_1[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
-st.write('### Below 200 DMA And Above 50 DMA')
+st.write('### Change in Trend - Positive')
 
 st.dataframe(etf_tr_2[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
