@@ -209,7 +209,7 @@ st.write('## Excess Returns')
 st.write('### Excess Return above 80 percentile')
 st.dataframe(etf_ex_1[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
-st.write('### Excess Return below 20 percentile)
+st.write('### Excess Return below 20 percentile')
 st.dataframe(etf_ex_2[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
 st.write('## High volatility and Large Drawdowns')
