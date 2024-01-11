@@ -177,7 +177,7 @@ with st.sidebar:
 
   st.dataframe(d_etf[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']])
 
-  url = "https://drive.google.com/file/d/1Y6kDfVQy-exsuics-oc2glWqtijI1-Dh/view?usp=share_link"
+  url = "https://drive.google.com/file/d/1nkVG3_tkDJt6WVeOhXllTkKHpygYjSf9/view?usp=sharing&authuser=2&hl=en_GB"
 
   st.write("Click on the link to view charts(%s) " % url)
 
@@ -185,12 +185,8 @@ with st.sidebar:
   
   st.write("Click on the link to view database(%s) " % url2)
   
-  url3 = "https://docs.google.com/spreadsheets/d/1Qc7bDn5_9EKY6vOTju2WRRbdOY44IY0AkiQYhNvfQ8I/edit?usp=share_link"  
-
-  st.write("Link to US data for 30, 60 AND 200 DMA(%s) " % url3)
-  
-  url4 = "https://us-stock-model.streamlit.app/"
-  st.write("Link to the US Stock Model(%s) " % url4)
+  url3 = "https://us-stock-model.streamlit.app/"
+  st.write("Link to the US Stock Model(%s) " % url3)
 
 
 st.write('## 50 & 200 MA Signals')
