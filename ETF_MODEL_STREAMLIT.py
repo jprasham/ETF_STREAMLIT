@@ -188,6 +188,9 @@ with st.sidebar:
   url3 = "https://us-stock-model.streamlit.app/"
   st.write("Link to the US Stock Model(%s) " % url3)
 
+  url4 = "https://gsheets-to-app-xudmrlcdafcnnzepcbn9cu.streamlit.app"
+  st.write("Link to the India Charts(%s) " % url4)
+
 
 st.write('## 50 & 200 MA Signals')
 st.dataframe(etf_dma[['Ticker','Name','Category','Sub category','Price','SCORE','>50DMA','>50DMA>200DMA','>200DMA']])
