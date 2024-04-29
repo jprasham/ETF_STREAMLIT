@@ -37,7 +37,7 @@ new_header = ETFs.iloc[0]
 ETFs = ETFs[1:] 
 ETFs.columns = new_header
 ETFs.reset_index(drop=True, inplace=True)
-ticker_index = ETFs['Ticker']
+#ticker_index = ETFs['Ticker']
 ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
       'Return_3M','Return_6M','Return_12M','PctRank_1W',
       'PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M',
@@ -65,8 +65,8 @@ ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
 #combined_df.replace('',np.nan,inplace = True)
 #combined_df = combined_df.astype(float)
 
-ETFs['Ticker_Index'] = ETFs['Ticker']
-ETFs.set_index('Ticker_Index',inplace = True)
+#ETFs['Ticker_Index'] = ETFs['Ticker']
+#ETFs.set_index('Ticker_Index',inplace = True)
 
 #etf_dma  = ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')]
 etf_dma = ETFs[['Ticker','Name','Category','Sub category','Price','50DMAModel','100DMAModel','200DMAModel']]
