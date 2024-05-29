@@ -188,8 +188,11 @@ with st.sidebar:
   url3 = "https://us-stock-model.streamlit.app/"
   st.write("Link to the US Stock Model (%s) " % url3)
 
-  url4 = "https://india-stock-model.streamlit.app"
-  st.write("Link to the India Charts (%s) " % url4)
+  url4 = "https://fund-holdings.streamlit.app"
+  st.write("Link to the Fund Holdings (%s) " % url4)
+ 
+  url5 = "https://india-stock-model.streamlit.app"
+  st.write("Link to the India Charts (%s) " % url5)
 
 
 st.write('## 50 & 200 MA Signals')
