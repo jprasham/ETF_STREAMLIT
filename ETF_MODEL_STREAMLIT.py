@@ -69,12 +69,12 @@ ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
 #ETFs.set_index('Ticker_Index',inplace = True)
 
 #etf_dma  = ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')]
-etf_dma = ETFs[['Ticker','Name','Category','Sub category','Price','50DMAModel','100DMAModel','200DMAModel']]
+etf_dma = ETFs[['Ticker','Name','Category','Sub Category','Price','50DMAModel','100DMAModel','200DMAModel']]
 etf_dma['>50DMA'] = (etf_dma['50DMAModel'] == "INVESTED").astype(int)
 etf_dma['>200DMA'] = (etf_dma['200DMAModel'] == "INVESTED").astype(int)
 etf_dma['>50DMA>200DMA'] = (etf_dma['200DMAModel'] == "INVESTED").astype(int)
 etf_dma['SCORE'] = etf_dma['>50DMA'] + etf_dma['>200DMA'] + etf_dma['>50DMA>200DMA']
-etf_dma = etf_dma[['Ticker','Name','Category','Sub category','Price','>50DMA','>50DMA>200DMA','>200DMA','SCORE']]
+etf_dma = etf_dma[['Ticker','Name','Category','Sub Category','Price','>50DMA','>50DMA>200DMA','>200DMA','SCORE']]
 
 etf_tr_1 = ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')]
 etf_tr_2 = ETFs.loc[(ETFs['200DMAModel'] == 'CASH') & (ETFs['50DMAModel'] == 'INVESTED') & (ETFs['Fallin1Wmore10']<= 10)]
@@ -88,7 +88,7 @@ st.header('ETF Frame Work')
 with st.sidebar:
 
   category = st.multiselect('Category:',ETFs['Category'].unique())
-  sub = st.multiselect ('Sub Category:',ETFs['Sub category'].unique())
+  sub = st.multiselect ('Sub Category:',ETFs['Sub Category'].unique())
   etf = st.multiselect('ETF Tickers:', ETFs['Ticker'])
   
 
@@ -98,13 +98,13 @@ with st.sidebar:
 
   elif (category == []) and (etf == []) and (sub !=[]):
 
-    d_etf = ETFs.loc[ETFs['Sub category'].isin(sub)]
-    etf_dma = etf_dma.loc[etf_dma['Sub category'].isin(sub)]
-    etf_tr_1 = etf_tr_1.loc[etf_tr_1['Sub category'].isin(sub)]
-    etf_tr_2 = etf_tr_2.loc[etf_tr_2['Sub category'].isin(sub)]
-    etf_ex_1 = etf_ex_1.loc[etf_ex_1['Sub category'].isin(sub)]
-    etf_ex_2 = etf_ex_2.loc[etf_ex_2['Sub category'].isin(sub)]
-    etf_ex50 = etf_ex50.loc[etf_ex50['Sub category'].isin(sub)]
+    d_etf = ETFs.loc[ETFs['Sub Category'].isin(sub)]
+    etf_dma = etf_dma.loc[etf_dma['Sub Category'].isin(sub)]
+    etf_tr_1 = etf_tr_1.loc[etf_tr_1['Sub Category'].isin(sub)]
+    etf_tr_2 = etf_tr_2.loc[etf_tr_2['Sub Category'].isin(sub)]
+    etf_ex_1 = etf_ex_1.loc[etf_ex_1['Sub Category'].isin(sub)]
+    etf_ex_2 = etf_ex_2.loc[etf_ex_2['Sub Category'].isin(sub)]
+    etf_ex50 = etf_ex50.loc[etf_ex50['Sub Category'].isin(sub)]
 
   elif (category == []) and (etf != []) and (sub ==[]):
 
@@ -120,14 +120,14 @@ with st.sidebar:
 
   elif (category == []) and (etf != []) and (sub !=[]):
     
-    d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Sub category'].isin(sub))]
-    etf_dma = etf_dma.loc[(etf_dma['Ticker'].isin(etf)) & (etf_dma['Sub category'].isin(sub))]
-    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Ticker'].isin(etf)) & (etf_tr_1['Sub category'].isin(sub))]
-    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Ticker'].isin(etf)) & (etf_tr_2['Sub category'].isin(sub))]
-    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Ticker'].isin(etf)) & (etf_ex_1['Sub category'].isin(sub))]
-    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Ticker'].isin(etf)) & (etf_ex_2['Sub category'].isin(sub))]
-    etf_vol = etf_vol.loc[(etf_vol['Ticker'].isin(etf)) & (etf_vol['Sub category'].isin(sub))]
-    etf_ex50 = etf_ex50.loc[(etf_ex50['Ticker'].isin(etf)) & (etf_ex50['Sub category'].isin(sub))]
+    d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Sub Category'].isin(sub))]
+    etf_dma = etf_dma.loc[(etf_dma['Ticker'].isin(etf)) & (etf_dma['Sub Category'].isin(sub))]
+    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Ticker'].isin(etf)) & (etf_tr_1['Sub Category'].isin(sub))]
+    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Ticker'].isin(etf)) & (etf_tr_2['Sub Category'].isin(sub))]
+    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Ticker'].isin(etf)) & (etf_ex_1['Sub Category'].isin(sub))]
+    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Ticker'].isin(etf)) & (etf_ex_2['Sub Category'].isin(sub))]
+    etf_vol = etf_vol.loc[(etf_vol['Ticker'].isin(etf)) & (etf_vol['Sub Category'].isin(sub))]
+    etf_ex50 = etf_ex50.loc[(etf_ex50['Ticker'].isin(etf)) & (etf_ex50['Sub Category'].isin(sub))]
 
 
   elif (category != []) and (etf == []) and (sub ==[]):
@@ -143,14 +143,14 @@ with st.sidebar:
 
   elif (category != []) and (etf == []) and (sub !=[]):
 
-    d_etf = ETFs.loc[(ETFs['Category'].isin(category)) & (ETFs['Sub category'].isin(sub))]
-    etf_dma = etf_dma.loc[(etf_dma['Category'].isin(category)) & (etf_dma['Sub category'].isin(sub))]
-    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Category'].isin(category)) & (etf_tr_1['Sub category'].isin(sub))]
-    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Category'].isin(category)) & (etf_tr_2['Sub category'].isin(sub))]
-    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Category'].isin(category)) & (etf_ex_1['Sub category'].isin(sub))]
-    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Category'].isin(category)) & (etf_ex_2['Sub category'].isin(sub))]
-    etf_vol = etf_vol.loc[(etf_vol['Category'].isin(category)) & (etf_vol['Sub category'].isin(sub))]
-    etf_ex50 = etf_ex50.loc[(etf_ex50['Category'].isin(category)) & (etf_ex50['Sub category'].isin(sub))]
+    d_etf = ETFs.loc[(ETFs['Category'].isin(category)) & (ETFs['Sub Category'].isin(sub))]
+    etf_dma = etf_dma.loc[(etf_dma['Category'].isin(category)) & (etf_dma['Sub Category'].isin(sub))]
+    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Category'].isin(category)) & (etf_tr_1['Sub Category'].isin(sub))]
+    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Category'].isin(category)) & (etf_tr_2['Sub Category'].isin(sub))]
+    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Category'].isin(category)) & (etf_ex_1['Sub Category'].isin(sub))]
+    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Category'].isin(category)) & (etf_ex_2['Sub Category'].isin(sub))]
+    etf_vol = etf_vol.loc[(etf_vol['Category'].isin(category)) & (etf_vol['Sub Category'].isin(sub))]
+    etf_ex50 = etf_ex50.loc[(etf_ex50['Category'].isin(category)) & (etf_ex50['Sub Category'].isin(sub))]
 
   elif (category  != []) and (etf != []) and (sub ==[]):
 
@@ -165,17 +165,17 @@ with st.sidebar:
 
   else:
 
-    d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Category'].isin(category)) & (ETFs['Sub category'].isin(sub))]
-    etf_dma = etf_dma.loc[(etf_dma['Ticker'].isin(etf)) & (etf_dma['Category'].isin(category)) & (etf_dma['Sub category'].isin(sub))]
-    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Ticker'].isin(etf)) & (etf_tr_1['Category'].isin(category)) & (etf_tr_1['Sub category'].isin(sub))]
-    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Ticker'].isin(etf)) & (etf_tr_2['Category'].isin(category)) & (etf_tr_2['Sub category'].isin(sub))]
-    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Ticker'].isin(etf)) & (etf_ex_1['Category'].isin(category)) & (etf_ex_1['Sub category'].isin(sub))]
-    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Ticker'].isin(etf)) & (etf_ex_2['Category'].isin(category)) & (etf_ex_2['Sub category'].isin(sub))]
-    etf_vol = etf_vol.loc[(etf_vol['Ticker'].isin(etf)) & (etf_vol['Category'].isin(category)) & (etf_vol['Sub category'].isin(sub))]
-    etf_ex50 = etf_ex50.loc[(etf_ex50['Ticker'].isin(etf)) & (etf_ex50['Category'].isin(category)) & (etf_ex50['Sub category'].isin(sub))]
+    d_etf = ETFs.loc[(ETFs['Ticker'].isin(etf)) & (ETFs['Category'].isin(category)) & (ETFs['Sub Category'].isin(sub))]
+    etf_dma = etf_dma.loc[(etf_dma['Ticker'].isin(etf)) & (etf_dma['Category'].isin(category)) & (etf_dma['Sub Category'].isin(sub))]
+    etf_tr_1 = etf_tr_1.loc[(etf_tr_1['Ticker'].isin(etf)) & (etf_tr_1['Category'].isin(category)) & (etf_tr_1['Sub Category'].isin(sub))]
+    etf_tr_2 = etf_tr_2.loc[(etf_tr_2['Ticker'].isin(etf)) & (etf_tr_2['Category'].isin(category)) & (etf_tr_2['Sub Category'].isin(sub))]
+    etf_ex_1 = etf_ex_1.loc[(etf_ex_1['Ticker'].isin(etf)) & (etf_ex_1['Category'].isin(category)) & (etf_ex_1['Sub Category'].isin(sub))]
+    etf_ex_2 = etf_ex_2.loc[(etf_ex_2['Ticker'].isin(etf)) & (etf_ex_2['Category'].isin(category)) & (etf_ex_2['Sub Category'].isin(sub))]
+    etf_vol = etf_vol.loc[(etf_vol['Ticker'].isin(etf)) & (etf_vol['Category'].isin(category)) & (etf_vol['Sub Category'].isin(sub))]
+    etf_ex50 = etf_ex50.loc[(etf_ex50['Ticker'].isin(etf)) & (etf_ex50['Category'].isin(category)) & (etf_ex50['Sub Category'].isin(sub))]
    
 
-  st.dataframe(d_etf[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
+  st.dataframe(d_etf[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
   url = "https://drive.google.com/file/d/1nkVG3_tkDJt6WVeOhXllTkKHpygYjSf9/view?usp=sharing&authuser=2&hl=en_GB"
 
@@ -196,26 +196,26 @@ with st.sidebar:
 
 
 st.write('## 50 & 200 MA Signals')
-st.dataframe(etf_dma[['Ticker','Name','Category','Sub category','SCORE','Price','>50DMA','>50DMA>200DMA','>200DMA']], hide_index=True)
+st.dataframe(etf_dma[['Ticker','Name','Category','Sub Category','SCORE','Price','>50DMA','>50DMA>200DMA','>200DMA']], hide_index=True)
 
 st.write('## Change in Trend')
 st.write('### Change in Trend - Negative')
 
-st.dataframe(etf_tr_1[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
+st.dataframe(etf_tr_1[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('### Change in Trend - Positive')
 
-st.dataframe(etf_tr_2[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
+st.dataframe(etf_tr_2[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('## Excess Returns')
 st.write('### Excess Return above 80 percentile')
-st.dataframe(etf_ex_1[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
+st.dataframe(etf_ex_1[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('### Excess Return below 20 percentile')
-st.dataframe(etf_ex_2[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
+st.dataframe(etf_ex_2[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('## High volatility and Large Drawdowns')
-st.dataframe(etf_vol[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
+st.dataframe(etf_vol[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
 
 st.write('## Excess Returns > 20 and losing Short Term Momentum(50DMA)')
-st.dataframe(etf_ex50[['Ticker','Name','Category','Sub category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
+st.dataframe(etf_ex50[['Ticker','Name','Category','Sub Category','Price','PctRank_1M','PctRank_3M','PctRank_6M','PctRank_12M','HistExcessReturn_1M','HistExcessReturn_3M','HistExcessReturn_6M','HistExcessReturn_12M','ChgRnk_1M','ChgRnk_3M','ChgRnk_6M','ChgRnk_12M']], hide_index=True)
