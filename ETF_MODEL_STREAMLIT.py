@@ -69,7 +69,7 @@ ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
 #ETFs.set_index('Ticker_Index',inplace = True)
 
 #etf_dma  = ETFs.loc[(ETFs['50DMAModel'] == 'INVESTED') & (ETFs['100DMAModel'] == 'INVESTED') & (ETFs['200DMAModel'] == 'INVESTED')]
-etf_dma = ETFs[['Ticker','Name','Category','Sub Category','Price','50DMAModel','100DMAModel','200DMAModel']]
+etf_dma = ETFs[['Ticker','Name','Category','Sub Category','Price','30EMAModel','60EMAModel','200EMAModel']]
 etf_dma['>30DMA'] = (etf_dma['30EMAModel'] == "INVESTED").astype(int)
 etf_dma['>200DMA'] = (etf_dma['200EMAModel'] == "INVESTED").astype(int)
 etf_dma['>60EMA'] = (etf_dma['60EMAModel'] == "INVESTED").astype(int)
