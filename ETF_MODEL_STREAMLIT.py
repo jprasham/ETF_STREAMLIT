@@ -72,9 +72,9 @@ ETFs[['Beta','Price','Change_1D','Return_1W','Return_1M',
 etf_dma = ETFs[['Ticker','Name','Category','Sub Category','Price','50DMAModel','100DMAModel','200DMAModel']]
 etf_dma['>50DMA'] = (etf_dma['50DMAModel'] == "INVESTED").astype(int)
 etf_dma['>200DMA'] = (etf_dma['200DMAModel'] == "INVESTED").astype(int)
-etf_dma['>50DMA>200DMA'] = (etf_dma['200DMAModel'] == "INVESTED").astype(int)
-etf_dma['SCORE'] = etf_dma['>50DMA'] + etf_dma['>200DMA'] + etf_dma['>50DMA>200DMA']
-etf_dma = etf_dma[['Ticker','Name','Category','Sub Category','Price','>50DMA','>50DMA>200DMA','>200DMA','SCORE']]
+etf_dma['>100DMA'] = (etf_dma['100DMAModel'] == "INVESTED").astype(int)
+etf_dma['SCORE'] = etf_dma['>50DMA'] + etf_dma['>200DMA'] + etf_dma['>100DMA']
+etf_dma = etf_dma[['Ticker','Name','Category','Sub Category','Price','>50DMA','>100DMA','>200DMA','SCORE']]
 
 etf_tr_1 = ETFs.loc[(ETFs['200DMAModel'] == 'INVESTED') & (ETFs['50DMAModel'] == 'CASH')]
 etf_tr_2 = ETFs.loc[(ETFs['200DMAModel'] == 'CASH') & (ETFs['50DMAModel'] == 'INVESTED') & (ETFs['Fallin1Wmore10']<= 10)]
@@ -196,7 +196,7 @@ with st.sidebar:
 
 
 st.write('## 50 & 200 MA Signals')
-st.dataframe(etf_dma[['Ticker','Name','Category','Sub Category','SCORE','Price','>50DMA','>50DMA>200DMA','>200DMA']], hide_index=True)
+st.dataframe(etf_dma[['Ticker','Name','Category','Sub Category','SCORE','Price','>50DMA','>100DMA','>200DMA']], hide_index=True)
 
 st.write('## Change in Trend')
 st.write('### Change in Trend - Negative')
